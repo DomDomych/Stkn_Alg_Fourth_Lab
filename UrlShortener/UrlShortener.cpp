@@ -78,3 +78,11 @@ void UrlShortener::printMostPopular()
              <<key<<" -> "<<value<<"| "<<count<<'\n';
     return;
 }
+
+    std::vector<std::pair<std::string,std::string>> UrlShortener::find_by_word(const std::string& word)
+    {
+        std::vector<std::pair<std::string,std::string>> found;
+        found = CodeToUrl.find_by_word(word);
+
+        return found;
+    }

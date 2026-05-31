@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 class Node
 {
@@ -23,7 +24,7 @@ class AVLTree
     unsigned int height(Node *p);
     int bfactor(Node *p);
     void fixheight(Node *p);
-    bool kmp(const std::string& value,const std::string& word);
+    bool kmp(const std::string& value,const std::string& word)const;
     Node* RotateRight(Node *p);
     Node* RotateLeft(Node *p);
     Node* balance(Node *p);
@@ -32,10 +33,12 @@ class AVLTree
     Node* MostPopular(Node *p,Node *best)const;
     void clear(Node *p);
     void print(Node *p,int& number)const;
+    void find_by_word(Node *p,const std::string& word,std::vector<std::pair<std::string,std::string>>& found);
     public:
     bool get(const std::string& key,std::string& value);
     bool getMostPopular(std::string& key,std::string& value,int& count);
     std::string& operator[](const std::string& key);
+    std::vector<std::pair<std::string, std::string>> find_by_word(const std::string& word);
     void print()const;
     void increment(const std::string& key);
     AVLTree(const AVLTree&) = delete;

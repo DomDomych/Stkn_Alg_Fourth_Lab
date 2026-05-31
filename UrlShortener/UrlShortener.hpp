@@ -2,7 +2,7 @@
 
 #include <string>
 #include "tree/tree.hpp"
-
+#include <vector>
 
 class UrlShortener
 {
@@ -22,4 +22,5 @@ class UrlShortener
     bool contains(const std::string& code);
     void print()const;
     void printMostPopular();
+    std::vector<std::pair<std::string,std::string>> find_by_word(const std::string& word);
 };

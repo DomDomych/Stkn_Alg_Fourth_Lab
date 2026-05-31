@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-std::vector<int> prefixfunction(const std::string s)
+std::vector<int> prefixfunction(const std::string& s)
 {
     std::vector<int> pi(s.size(), 0);
     for (int i = 1; i < s.size(); i++)
@@ -222,7 +222,7 @@ bool AVLTree::getMostPopular(std::string&key,std::string& value,int& count)
     return true;
 }
 
-bool AVLTree::kmp(const std::string& value,const std::string& word)
+bool AVLTree::kmp(const std::string& value,const std::string& word)const
 {
     if(word.empty())return false;
 
@@ -250,7 +250,22 @@ bool AVLTree::kmp(const std::string& value,const std::string& word)
     }
     return false;
 }
-
+void AVLTree::find_by_word(Node *p,const std::string& word,std::vector<std::pair<std::string,std::string>>& found)
+{
+    if(!p)return;
+    find_by_word(p->left,word,found);
+    if(kmp(p->value,word)){
+        found.push_back({p->key,p->value});
+    }
+    find_by_word(p->right,word,found);
+    return;
+}
+std::vector<std::pair<std::string, std::string>> AVLTree::find_by_word(const std::string& word)
+{
+    std::vector<std::pair<std::string,std::string>> found;
+    find_by_word(root,word,found);
+    return found;
+}
 AVLTree::~AVLTree()
 {
     clear(root);
