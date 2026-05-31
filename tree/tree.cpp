@@ -5,8 +5,9 @@ Node::Node(const std::string& key,const std::string& value):
         key(key),                                               
         value(value),                                              
         left(nullptr),                                            
-        right(nullptr),                                                            
+        right(nullptr),                                                         
         h(1)
+        count(0);
         {};
 
 
@@ -152,7 +153,7 @@ void AVLTree::print(Node *p,int& number)const
 {
     if(!p)return;
     print(p->left,number);
-    std::cout<<number<<". "<<p->key<<"->"<<p->value<<'\n';
+    std::cout<<number<<". "<<p->key<<"->"<<p->value<<' '<<p->count<<'\n';
     number++;
     print(p->right,number);
 }
@@ -163,7 +164,16 @@ void AVLTree::print()const
     print(root,number);
 }
 
+void AVLTree::increament(const std::string& key)
+{
+    Node* found = find(root,key);
 
+    if(found)
+    {
+        found->count++;
+    }
+    return;
+}
 AVLTree::~AVLTree()
 {
     clear(root);

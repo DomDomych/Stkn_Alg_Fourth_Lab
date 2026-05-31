@@ -10,7 +10,7 @@ class Node
     Node* left;
     Node* right;
     unsigned int h;
-
+    unsigned int count;
     Node(const std::string& key,const std::string& value);
     ~Node() = default;
     friend class AVLTree;
@@ -35,6 +35,7 @@ class AVLTree
     bool get(const std::string& key,std::string& value);
     std::string& operator[](const std::string& key);
     void print()const;
+    int getcount(Node *p)const;
     AVLTree();
     ~AVLTree();
 };
