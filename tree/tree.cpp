@@ -309,7 +309,7 @@ void AVLTree::find_by_word(Node *p,const std::string& word,std::vector<std::pair
     find_by_word(p->right,word,found);
     return;
 }
-std::vector<std::pair<std::string, std::string>> AVLTree::find_by_word(const std::string& word)
+std::vector<std::pair<std::string, std::string>> AVLTree::find_by_word(const std::string& word) const
 {
     std::vector<std::pair<std::string,std::string>> found;
     find_by_word(root,word,found);

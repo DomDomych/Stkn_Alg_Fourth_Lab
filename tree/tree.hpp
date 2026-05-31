@@ -37,13 +37,13 @@ class AVLTree
     void clear(Node *p);
     void print(Node *p,int& number)const;
     void find_by_word(Node *p,const std::string& word,std::vector<std::pair<std::string,std::string>>& found)const;
-    
+
     public:
     bool remove(const std::string& key);
     bool get(const std::string& key,std::string& value);
     bool getMostPopular(std::string& key,std::string& value,int& count)const;
     std::string& operator[](const std::string& key);
-    std::vector<std::pair<std::string, std::string>> find_by_word(const std::string& word);
+    std::vector<std::pair<std::string, std::string>> find_by_word(const std::string& word) const;
     void print()const;
     void increment(const std::string& key);
     AVLTree(const AVLTree&) = delete;
