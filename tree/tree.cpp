@@ -134,6 +134,48 @@ Node* AVLTree::find(Node *p,const std::string& key)
     return p;
 }
 
+Node* AVLTree::findmin(Node *p)
+{
+    return p->left?findmin(p->left):p;
+}
+
+Node* AVLTree::removemin(Node *p)
+{
+    if(p->left==nullptr)
+    {
+        return p->right;
+    }
+
+    p->left = removemin(p->left);
+    return balance(p);  
+}
+
+Node* AVLTree::remove(Node* p,const std::string& key)
+{
+    if(!p)return nullptr;
+
+    if(key<p->key)
+    {
+        p->left = remove(p->left,key);
+    }
+    else if (key>p->key)
+    {
+        p->right = remove(p->right,key);
+    }
+    else
+    {
+        Node* l = p->left;
+        Node* r = p->right;
+        delete p;
+        if(!r)return l;
+        Node* min = findmin(r);
+        min->right = removemin(r);
+        min->left = l;
+        return balance(min);
+    }
+    return balance(p);
+}
+
 bool AVLTree::get(const std::string& key,std::string& value)
 {
     Node* found = find(root,key);
@@ -209,7 +251,7 @@ Node* AVLTree::MostPopular(Node *p,Node *best)const
 
     return best;
 }
-bool AVLTree::getMostPopular(std::string&key,std::string& value,int& count)
+bool AVLTree::getMostPopular(std::string&key,std::string& value,int& count)const
 {
     Node* best = MostPopular(root,nullptr);
 
@@ -249,6 +291,13 @@ bool AVLTree::kmp(const std::string& value,const std::string& word)const
         }
     }
     return false;
+}
+bool AVLTree::remove(const std::string& key)
+{
+    if(!find(root,key))return false;
+
+    root = remove(root,key);
+    return true;
 }
 void AVLTree::find_by_word(Node *p,const std::string& word,std::vector<std::pair<std::string,std::string>>& found)
 {

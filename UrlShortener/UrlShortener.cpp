@@ -21,7 +21,7 @@ std::string UrlShortener::gencode(int number)
     return code;
 }
 
-UrlShortener::UrlShortener():count(0),maxlength(0){}
+UrlShortener::UrlShortener():count(0),maxlength(20){}
 
 std::string UrlShortener::shorten(const std::string& Url)
 {
@@ -61,8 +61,9 @@ std::string UrlShortener::getOrig(const std::string& scode)
 std::string UrlShortener::getcodebyUrl(const std::string& url)
 {
     std::string code;
-    UrlToCode.get(url,code);
-    return code;
+    if(UrlToCode.get(url,code))return code;
+
+    return "";      
 }
 
 bool UrlShortener::contains(const std::string& code)
@@ -71,13 +72,24 @@ bool UrlShortener::contains(const std::string& code)
     return CodeToUrl.get(code,pass);
 }
 
+bool UrlShortener::changeUrl(const std::string& code,const std::string& url)
+{
+    std::string oldUrl;
+    if(!CodeToUrl.get(code,oldUrl))return false;
+
+    UrlToCode.remove(oldUrl);
+    CodeToUrl[code] = url;
+    UrlToCode[url] = code;
+    return true;
+}
+
 void UrlShortener::print()const
 {
     CodeToUrl.print();
     return;
 }
 
-void UrlShortener::printMostPopular()
+void UrlShortener::printMostPopular() const
 {
     std::string key,value;
     int count;
