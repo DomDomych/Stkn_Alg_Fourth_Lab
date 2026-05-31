@@ -21,6 +21,7 @@ class UrlShortener
     std::string getcodebyUrl(const std::string& url);
     bool contains(const std::string& code);
     bool changeUrl(const std::string& code,const std::string& value);
+    bool remove(const std::string& code);
     void print()const;
     void printMostPopular() const;
     std::vector<std::pair<std::string,std::string>> find_by_word(const std::string& word);

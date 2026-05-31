@@ -37,7 +37,7 @@ class AVLTree
     void clear(Node *p);
     void print(Node *p,int& number)const;
     void find_by_word(Node *p,const std::string& word,std::vector<std::pair<std::string,std::string>>& found)const;
-
+    
     public:
     bool remove(const std::string& key);
     bool get(const std::string& key,std::string& value);

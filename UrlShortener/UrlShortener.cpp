@@ -83,6 +83,21 @@ bool UrlShortener::changeUrl(const std::string& code,const std::string& url)
     return true;
 }
 
+bool UrlShortener::remove(const std::string& code)
+{
+    std::string url;
+
+    if (!CodeToUrl.get(code, url))
+    {
+        return false;
+    }
+
+    CodeToUrl.remove(code);
+    UrlToCode.remove(url);
+
+    return true;
+}
+
 void UrlShortener::print()const
 {
     CodeToUrl.print();
