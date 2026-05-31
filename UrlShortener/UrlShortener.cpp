@@ -46,7 +46,7 @@ std::string UrlShortener::getOrig(const std::string& scode)
 
     if(CodeToUrl.get(scode,Url))
     {
-        CodeToUrl.increament(scode);
+        CodeToUrl.increment(scode);
         return Url;
     }
 

@@ -164,7 +164,7 @@ void AVLTree::print()const
     print(root,number);
 }
 
-void AVLTree::increament(const std::string& key)
+void AVLTree::increment(const std::string& key)
 {
     Node* found = find(root,key);
 
@@ -197,10 +197,13 @@ bool AVLTree::getMostPopular(std::string&key,std::string& value,int& count)
     key = best->key;
     value = best->value;
     count = best->count;
-    
+
     return true;
 }
+
+
 AVLTree::~AVLTree()
 {
     clear(root);
+    root = nullptr;
 }

@@ -10,7 +10,7 @@ class Node
     Node* left;
     Node* right;
     unsigned int h;
-    unsigned int count;
+    int count;
     Node(const std::string& key,const std::string& value);
     ~Node() = default;
     friend class AVLTree;
@@ -23,7 +23,7 @@ class AVLTree
     unsigned int height(Node *p);
     int bfactor(Node *p);
     void fixheight(Node *p);
-
+    //bool kmp(const std::string& value,const std::string& word);
     Node* RotateRight(Node *p);
     Node* RotateLeft(Node *p);
     Node* balance(Node *p);
@@ -37,7 +37,9 @@ class AVLTree
     bool getMostPopular(std::string& key,std::string& value,int& count);
     std::string& operator[](const std::string& key);
     void print()const;
-    void increament(const std::string& key);
+    void increment(const std::string& key);
+    AVLTree(const AVLTree&) = delete;
+    AVLTree& operator=(const AVLTree&) = delete;
     AVLTree();
     ~AVLTree();
 };
