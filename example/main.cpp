@@ -39,7 +39,7 @@ int main()
         std::cout << "Код " << code2 << " существует\n";
     }
     
-    if(shortener.contains("Dom_Dom"))
+    if(!shortener.contains("Dom_Dom"))
     {
         std::cout << "Код Dom_Dom не найден";
     }
@@ -74,7 +74,7 @@ int main()
 
     std::cout << "\n8. Обратный поиск: код по длинной ссылке\n";
 
-    std::cout << shortener.getcodebyUrl("https://github.com/DomDomych/Stkn_Alg_Third_Lab/tree/main") << '\n';
+    std::cout << "https://github.com/DomDomych/Stkn_Alg_Third_Lab/tree/main -> "<<shortener.getcodebyUrl("https://github.com/DomDomych/Stkn_Alg_Third_Lab/tree/main") << '\n';
 
     std::cout << "\n9. Изменение длинной ссылки для существующего кода\n";
 

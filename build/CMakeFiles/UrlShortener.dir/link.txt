@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/UrlShortener.dir/link.d CMakeFiles/UrlShortener.dir/example/main.cpp.o CMakeFiles/UrlShortener.dir/UrlShortener/UrlShortener.cpp.o CMakeFiles/UrlShortener.dir/tree/tree.cpp.o -o UrlShortener
