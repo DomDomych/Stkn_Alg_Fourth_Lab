@@ -94,3 +94,20 @@ Node* AVLTree::insert(Node *p,const std::string& key,const std::string& value)
     }
     return balance(p);
 }
+
+Node* AVLTree::find(Node *p,const std::string& key)
+{
+    if(!p)
+    {
+        return nullptr;
+    }
+    if(key<p->key)
+    {
+        return find(p->left,key);
+    }
+    if(key>p->key)
+    {
+        return find(p->right,key);
+    }
+    return p;
+}

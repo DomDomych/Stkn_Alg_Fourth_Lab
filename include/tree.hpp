@@ -26,8 +26,8 @@ class AVLTree
     Node* RotateRight(Node *p);
     Node* RotateLeft(Node *p);
     Node* balance(Node *p);
-    Node* insert(Node *p,std::string key,std::string value);
-    
+    Node* insert(Node *p,const std::string& key,const std::string& value);
+
     public:
     AVLTree();
 };
