@@ -1,5 +1,5 @@
 #include "tree.hpp"
-
+#include <iostream>
 
 Node::Node(const std::string& key,const std::string& value):
         key(key),                                               
@@ -148,6 +148,21 @@ void AVLTree::clear(Node *p)
 
     delete p;
 }
+void AVLTree::print(Node *p,int& number)const
+{
+    if(!p)return;
+    print(p->left,number);
+    std::cout<<number<<". "<<p->key<<' '<<p->value<<'\n';
+    number++;
+    print(p->right,number);
+}
+
+void AVLTree::print()const
+{
+    int number = 1;
+    print(root,number);
+}
+
 
 AVLTree::~AVLTree()
 {
