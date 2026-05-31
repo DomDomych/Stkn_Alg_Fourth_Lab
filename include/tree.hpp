@@ -22,9 +22,12 @@ class AVLTree
     unsigned int height(Node *p);
     int bfactor(Node *p);
     void fixheight(Node *p);
+
     Node* RotateRight(Node *p);
     Node* RotateLeft(Node *p);
     Node* balance(Node *p);
+    Node* insert(Node *p,std::string key,std::string value);
+    
     public:
     AVLTree();
 };
