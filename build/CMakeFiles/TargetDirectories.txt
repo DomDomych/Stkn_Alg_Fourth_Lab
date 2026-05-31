@@ -1,3 +1,0 @@
-/home/domik/Stankin/alg/fourth_lab/build/CMakeFiles/UrlShortener.dir
-/home/domik/Stankin/alg/fourth_lab/build/CMakeFiles/edit_cache.dir
-/home/domik/Stankin/alg/fourth_lab/build/CMakeFiles/rebuild_cache.dir
