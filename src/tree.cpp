@@ -77,12 +77,16 @@ Node* AVLTree::balance(Node *p)
     return p;
 }
 
-Node* AVLTree::insert(Node *p,std::string key,std::string value)
+Node* AVLTree::insert(Node *p,const std::string& key,const std::string& value)
 {
     if(!p)return new Node(key,value);
     if(key < p->key)
     {
         p->left = insert(p->left,key,value);
+    }
+    else if(key==p->key){
+        p->value = value;
+        return p;
     }
     else
     {
