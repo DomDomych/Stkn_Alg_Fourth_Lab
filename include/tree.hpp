@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 class Node
@@ -5,14 +7,20 @@ class Node
     private:
     std::string key;
     std::string value;
-    unsigned int h;
     Node* left;
     Node* right;
-    public:
-    
-    Node(const std::string& key,const std::string& value);
+    unsigned int h;
 
-    unsigned int height();
-    int bfactor();
-    void fixheight();
+    Node(const std::string& key,const std::string& value);
+    friend class AVLTree;
+};
+
+class AVLTree
+{
+    private:
+    //
+    public:
+    unsigned int height(Node *p);
+    int bfactor(Node *p);
+    void fixheight(Node *p);
 };
