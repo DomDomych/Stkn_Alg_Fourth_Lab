@@ -29,13 +29,15 @@ class AVLTree
     Node* balance(Node *p);
     Node* insert(Node *p,const std::string& key,const std::string& value);
     Node* find(Node *p,const std::string& key);
+    Node* MostPopular(Node *p,Node *best)const;
     void clear(Node *p);
     void print(Node *p,int& number)const;
     public:
     bool get(const std::string& key,std::string& value);
+    bool getMostPopular(std::string& key,std::string& value,int& count);
     std::string& operator[](const std::string& key);
     void print()const;
-    int getcount(Node *p)const;
+    void increament(const std::string& key);
     AVLTree();
     ~AVLTree();
 };

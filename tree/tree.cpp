@@ -6,8 +6,8 @@ Node::Node(const std::string& key,const std::string& value):
         value(value),                                              
         left(nullptr),                                            
         right(nullptr),                                                         
-        h(1)
-        count(0);
+        h(1),
+        count(0)
         {};
 
 
@@ -173,6 +173,32 @@ void AVLTree::increament(const std::string& key)
         found->count++;
     }
     return;
+}
+Node* AVLTree::MostPopular(Node *p,Node *best)const
+{
+    if(!p)return best;
+
+    if(!best || p->count > best->count)
+    {
+        best = p;
+    }
+
+    best = MostPopular(p->left,best);
+    best = MostPopular(p->right,best);
+
+    return best;
+}
+bool AVLTree::getMostPopular(std::string&key,std::string& value,int& count)
+{
+    Node* best = MostPopular(root,nullptr);
+
+    if(!best)return false;
+
+    key = best->key;
+    value = best->value;
+    count = best->count;
+    
+    return true;
 }
 AVLTree::~AVLTree()
 {
