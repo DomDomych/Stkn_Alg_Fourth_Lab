@@ -58,6 +58,13 @@ std::string UrlShortener::getOrig(const std::string& scode)
     return "";
 }
 
+std::string UrlShortener::getcodebyUrl(const std::string& url)
+{
+    std::string code;
+    UrlToCode.get(url,code);
+    return code;
+}
+
 bool UrlShortener::contains(const std::string& code)
 {
     std::string pass;
@@ -84,10 +91,10 @@ void UrlShortener::printMostPopular()
     return;
 }
 
-    std::vector<std::pair<std::string,std::string>> UrlShortener::find_by_word(const std::string& word)
-    {
-        std::vector<std::pair<std::string,std::string>> found;
-        found = CodeToUrl.find_by_word(word);
+std::vector<std::pair<std::string,std::string>> UrlShortener::find_by_word(const std::string& word)
+{
+    std::vector<std::pair<std::string,std::string>> found;
+    found = CodeToUrl.find_by_word(word);
+    return found;
+}
 
-        return found;
-    }

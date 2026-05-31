@@ -19,6 +19,7 @@ class UrlShortener
 
     std::string shorten(const std::string& Url);
     std::string getOrig(const std::string& scode);
+    std::string getcodebyUrl(const std::string& url);
     bool contains(const std::string& code);
     void print()const;
     void printMostPopular();
