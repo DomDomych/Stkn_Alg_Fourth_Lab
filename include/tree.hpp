@@ -12,7 +12,6 @@ class Node
     unsigned int h;
 
     Node(const std::string& key,const std::string& value);
-    Node() = default;
     ~Node() = default;
     friend class AVLTree;
 };
@@ -38,4 +37,6 @@ class AVLTree
     void print()const;
     AVLTree();
     ~AVLTree();
+    AVLTree(const AVLTree&) = delete;
+    AVLTree& operator=(const AVLTree&) = delete;
 };

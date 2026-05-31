@@ -152,7 +152,7 @@ void AVLTree::print(Node *p,int& number)const
 {
     if(!p)return;
     print(p->left,number);
-    std::cout<<number<<". "<<p->key<<' '<<p->value<<'\n';
+    std::cout<<number<<". "<<p->key<<" -> "<<p->value<<'\n';
     number++;
     print(p->right,number);
 }
@@ -167,4 +167,5 @@ void AVLTree::print()const
 AVLTree::~AVLTree()
 {
     clear(root);
+    root = nullptr;
 }
