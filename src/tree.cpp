@@ -132,9 +132,24 @@ std::string& AVLTree::operator[](const std::string& key)
 
     if(!found)
     {
-        insert(root,key,"");
+        root = insert(root,key,"");
         found = find(root,key);
     }
 
     return found->value;
+}
+
+void AVLTree::clear(Node *p)
+{
+    if(!p)return;
+
+    clear(p->left);
+    clear(p->right);
+
+    delete p;
+}
+
+AVLTree::~AVLTree()
+{
+    clear(root);
 }

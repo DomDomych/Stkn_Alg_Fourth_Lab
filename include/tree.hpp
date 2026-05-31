@@ -12,6 +12,8 @@ class Node
     unsigned int h;
 
     Node(const std::string& key,const std::string& value);
+    Node() = default;
+    ~Node() = default;
     friend class AVLTree;
 };
 
@@ -28,8 +30,10 @@ class AVLTree
     Node* balance(Node *p);
     Node* insert(Node *p,const std::string& key,const std::string& value);
     Node* find(Node *p,const std::string& key);
+    void clear(Node* p);
     public:
     bool get(const std::string& key,std::string& value);
     std::string& operator[](const std::string& key);
     AVLTree();
+    ~AVLTree();
 };
