@@ -11,7 +11,7 @@ class UrlShortener
     AVLTree UrlToCode;
 
     int count;
-
+    int maxlength;
     std::string gencode(int number);
 
     public:

@@ -21,7 +21,7 @@ std::string UrlShortener::gencode(int number)
     return code;
 }
 
-UrlShortener::UrlShortener():count(0){}
+UrlShortener::UrlShortener():count(0),maxlength(0){}
 
 std::string UrlShortener::shorten(const std::string& Url)
 {
@@ -32,6 +32,11 @@ std::string UrlShortener::shorten(const std::string& Url)
     }
 
     std::string code = gencode(count);
+
+    if(code.length() > maxlength)
+    {
+        return "";
+    }
     count++;
 
     CodeToUrl[code] = Url;
