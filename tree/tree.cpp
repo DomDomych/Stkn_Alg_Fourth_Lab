@@ -299,7 +299,7 @@ bool AVLTree::remove(const std::string& key)
     root = remove(root,key);
     return true;
 }
-void AVLTree::find_by_word(Node *p,const std::string& word,std::vector<std::pair<std::string,std::string>>& found)
+void AVLTree::find_by_word(Node *p,const std::string& word,std::vector<std::pair<std::string,std::string>>& found)const
 {
     if(!p)return;
     find_by_word(p->left,word,found);
