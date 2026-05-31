@@ -23,7 +23,7 @@ class AVLTree
     unsigned int height(Node *p);
     int bfactor(Node *p);
     void fixheight(Node *p);
-    //bool kmp(const std::string& value,const std::string& word);
+    bool kmp(const std::string& value,const std::string& word);
     Node* RotateRight(Node *p);
     Node* RotateLeft(Node *p);
     Node* balance(Node *p);

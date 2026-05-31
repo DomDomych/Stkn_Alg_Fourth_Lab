@@ -1,5 +1,26 @@
 #include "tree.hpp"
 #include <iostream>
+#include <vector>
+
+std::vector<int> prefixfunction(const std::string s)
+{
+    std::vector<int> pi(s.size(), 0);
+    for (int i = 1; i < s.size(); i++)
+    {
+        int j = pi[i - 1];
+        while (j > 0 && s[i] != s[j])
+        {
+            j = pi[j - 1];
+        }
+        if (s[i] == s[j])
+        {
+            j++;
+        }
+        pi[i] = j;
+    }
+
+    return pi;
+}
 
 Node::Node(const std::string& key,const std::string& value):
         key(key),                                               
@@ -201,6 +222,34 @@ bool AVLTree::getMostPopular(std::string&key,std::string& value,int& count)
     return true;
 }
 
+bool AVLTree::kmp(const std::string& value,const std::string& word)
+{
+    if(word.empty())return false;
+
+    std::vector<int> pi = prefixfunction(word);
+
+    int j=0;
+
+    for(int i=0;i<value.size();i++)
+    {
+        while(j>0 && value[i]!=word[j])
+        {
+            j = pi[j-1];
+        }
+
+        if(value[i]==word[j])
+        {
+            j++;
+
+        }
+
+        if(j==word.size())
+        {
+            return true;
+        }
+    }
+    return false;
+}
 
 AVLTree::~AVLTree()
 {
