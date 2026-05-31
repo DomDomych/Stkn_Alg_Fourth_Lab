@@ -18,9 +18,13 @@ class Node
 class AVLTree
 {
     private:
-    //
-    public:
+    Node* root;
     unsigned int height(Node *p);
     int bfactor(Node *p);
     void fixheight(Node *p);
+    Node* RotateRight(Node *p);
+    Node* RotateLeft(Node *p);
+    Node* balance(Node *p);
+    public:
+    AVLTree();
 };

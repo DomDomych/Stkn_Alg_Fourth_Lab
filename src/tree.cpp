@@ -32,5 +32,48 @@ void AVLTree::fixheight(Node *p)
     p->h = (hl>hr?hl:hr)+1;
 }
 
+AVLTree::AVLTree()
+{
+    root = nullptr;
+}
 
+Node* AVLTree::RotateRight(Node *p)
+{
+    Node* q = p->left;
+    p->left = q->right;
+    q->right = p;
+    fixheight(p);
+    fixheight(q);
+    return q;
+}
+
+Node* AVLTree::RotateLeft(Node *p)
+{
+    Node* q = p->right;
+    p->right = q->left;
+    q->left = p;
+    fixheight(p);
+    fixheight(q);
+    return q;
+}
+Node* AVLTree::balance(Node *p)
+{
+    fixheight(p);
+    if(bfactor(p)==2)
+    {
+        if(bfactor(p->right)<0){
+            p->right = RotateRight(p->right);
+        }
+        return RotateLeft(p);
+    }
+    if(bfactor(p)==-2)
+    {
+        if(bfactor(p->left)>0)
+        {
+            p->left = RotateLeft(p->left);
+        }
+        return RotateRight(p);
+    }
+    return p;
+}
 
