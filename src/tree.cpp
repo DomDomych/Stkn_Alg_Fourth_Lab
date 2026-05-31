@@ -111,3 +111,30 @@ Node* AVLTree::find(Node *p,const std::string& key)
     }
     return p;
 }
+
+bool AVLTree::get(const std::string& key,std::string& value)
+{
+    Node* found = find(root,key);
+
+    if(!found)
+    {
+        return false;
+    }
+
+    value = found->value;
+
+    return true;
+}
+
+std::string& AVLTree::operator[](const std::string& key)
+{
+    Node* found = find(root,key);
+
+    if(!found)
+    {
+        insert(root,key,"");
+        found = find(root,key);
+    }
+
+    return found->value;
+}

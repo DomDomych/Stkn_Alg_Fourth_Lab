@@ -27,7 +27,9 @@ class AVLTree
     Node* RotateLeft(Node *p);
     Node* balance(Node *p);
     Node* insert(Node *p,const std::string& key,const std::string& value);
-
+    Node* find(Node *p,const std::string& key);
     public:
+    bool get(const std::string& key,std::string& value);
+    std::string& operator[](const std::string& key);
     AVLTree();
 };
