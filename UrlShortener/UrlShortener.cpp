@@ -77,6 +77,10 @@ bool UrlShortener::changeUrl(const std::string& code,const std::string& url)
     std::string oldUrl;
     if(!CodeToUrl.get(code,oldUrl))return false;
 
+    std::string exist;
+
+    if(UrlToCode.get(url,exist) && exist!=code)return false;
+
     UrlToCode.remove(oldUrl);
     CodeToUrl[code] = url;
     UrlToCode[url] = code;
