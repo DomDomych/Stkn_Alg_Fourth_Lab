@@ -8,7 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(UrlShortener
     example/main.cpp
     UrlShortener/UrlShortener.cpp
-    tree/tree.cpp
 )
 
 target_include_directories(UrlShortener PRIVATE
